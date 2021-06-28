@@ -1,0 +1,227 @@
+Microsoft Windows [Version 10.0.19043.1052]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\debas>mongo
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("b4fdb6ee-5f3b-468b-9fed-699a789026aa") }
+MongoDB server version: 4.4.6
+---
+The server generated these startup warnings when booting:
+        2021-06-23T15:45:13.031+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show db
+uncaught exception: Error: don't know how to show [db] :
+shellHelper.show@src/mongo/shell/utils.js:1191:11
+shellHelper@src/mongo/shell/utils.js:819:15
+@(shellhelp2):1:1
+> show database
+uncaught exception: Error: don't know how to show [database] :
+shellHelper.show@src/mongo/shell/utils.js:1191:11
+shellHelper@src/mongo/shell/utils.js:819:15
+@(shellhelp2):1:1
+> show dbs;
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use imdb;
+switched to db imdb
+> db.imdb.insertMany([
+...     {
+...         "name":"Iron man",
+...         "language":["english","hindi"],
+...         "genre":["action","adventure","sci-fi"],
+...         "media":[
+...             {
+...                 "type":"image",
+...                 "url":"http://"
+...             },
+...             {
+...                 "type":"video",
+...                 "url":"http://"
+...             }
+...
+...         ],
+...         "actor":[
+...             {
+...                 "name":"Robert Downey Jr.",
+...                 "role":"hero",
+...                 "skill":["Actor","Dancer"],
+...                 "name_in_movie":"Tony stark"
+...             },
+...             {
+...                 "name":"Gwyneth Paltrow",
+...                 "role":"heroine",
+...                 "skill":"Actor",
+...                 "name_in_movie":"Pepper Potts"
+...             }
+...
+...         ],
+...         "review":[
+...             {
+...                 "username":"Debasish",
+...                 "review_given":"Excellent"
+...             },
+...             {
+...                 "username":"Anurag",
+...                 "review_given":"Verygood"
+...             }
+...         ]
+...     },
+...     {
+...         "name":"Black Panther",
+...         "language":["english","hindi"],
+...         "genre":["action","adventure","sci-fi"],
+...         "media":[
+...             {
+...                 "type":"image",
+...                 "url":"http://"
+...             },
+...             {
+...                 "type":"video",
+...                 "url":"http://"
+...             }
+...
+...         ],
+...         "actor":[
+...             {
+...                 "name":"Chadwick Boseman",
+...                 "role":"hero",
+...                 "skill":"Actor",
+...                 "name_in_movie":"T'Challa"
+...             },
+...             {
+...                 "name":"Michael B. Jordan",
+...                 "role":"villian",
+...                 "skill":"Actor",
+...                 "name_in_movie":"Erik Killmonger"
+...             }
+...
+...         ],
+...         "review":[
+...             {
+...                 "username":"Debasish",
+...                 "review_given":"Excellent"
+...             },
+...             {
+...                 "username":"Aditya",
+...                 "review_given":"Excellent"
+...             }
+...         ]
+...     },
+...     {
+...         "name":"The family man",
+...         "language":["english","hindi"],
+...         "genre":["action","comedy","drama"],
+...         "media":[
+...             {
+...                 "type":"image",
+...                 "url":"http://"
+...             },
+...             {
+...                 "type":"video",
+...                 "url":"http://"
+...             }
+...
+...         ],
+...         "actor":[
+...             {
+...                 "name":"Manoj Bajpayee",
+...                 "role":"hero",
+...                 "skill":"Actor",
+...                 "name_in_movie":"Srikant Tiwari"
+...             },
+...             {
+...                 "name":"Priyamani",
+...                 "role":"heroine",
+...                 "skill":"Actor",
+...                 "name_in_movie":"Suchitra Tiwari"
+...             }
+...
+...         ],
+...         "review":[
+...             {
+...                 "username":"Anubhav",
+...                 "review_given":"Good"
+...             },
+...             {
+...                 "username":"Anurag",
+...                 "review_given":"Verygood"
+...             }
+...         ]
+...     }
+...
+... ]);
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("60d43592f0dcd0539be1042e"),
+                ObjectId("60d43592f0dcd0539be1042f"),
+                ObjectId("60d43592f0dcd0539be10430")
+        ]
+}
+> db.imdb.find({"name":"The family man"});
+{ "_id" : ObjectId("60d43592f0dcd0539be10430"), "name" : "The family man", "language" : [ "english", "hindi" ], "genre" : [ "action", "comedy", "drama" ], "media" : [ { "type" : "image", "url" : "http://" }, { "type" : "video", "url" : "http://" } ], "actor" : [ { "name" : "Manoj Bajpayee", "role" : "hero", "skill" : "Actor", "name_in_movie" : "Srikant Tiwari" }, { "name" : "Priyamani", "role" : "heroine", "skill" : "Actor", "name_in_movie" : "Suchitra Tiwari" } ], "review" : [ { "username" : "Anubhav", "review_given" : "Good" }, { "username" : "Anurag", "review_given" : "Verygood" } ] }
+> db.imdb.find({"name":"The family man"}).pretty();
+{
+        "_id" : ObjectId("60d43592f0dcd0539be10430"),
+        "name" : "The family man",
+        "language" : [
+                "english",
+                "hindi"
+        ],
+        "genre" : [
+                "action",
+                "comedy",
+                "drama"
+        ],
+        "media" : [
+                {
+                        "type" : "image",
+                        "url" : "http://"
+                },
+                {
+                        "type" : "video",
+                        "url" : "http://"
+                }
+        ],
+        "actor" : [
+                {
+                        "name" : "Manoj Bajpayee",
+                        "role" : "hero",
+                        "skill" : "Actor",
+                        "name_in_movie" : "Srikant Tiwari"
+                },
+                {
+                        "name" : "Priyamani",
+                        "role" : "heroine",
+                        "skill" : "Actor",
+                        "name_in_movie" : "Suchitra Tiwari"
+                }
+        ],
+        "review" : [
+                {
+                        "username" : "Anubhav",
+                        "review_given" : "Good"
+                },
+                {
+                        "username" : "Anurag",
+                        "review_given" : "Verygood"
+                }
+        ]
+}
+> ^C
+bye
+
+C:\Users\debas>

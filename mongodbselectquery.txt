@@ -1,0 +1,6 @@
+1-	db.imdb.find({"name":"The family man"},{"media":1}).pretty();
+2-	db.imdb.find({"name":"The family man"},{"media":1,"review":1}).pretty();
+3-	db.imdb.find({"name":"The family man"},{"actor":1}).pretty();
+4-	db.imdb.find({"review.username":"Debasish"},{"review.review_given.$":1,"name":1}).pretty();
+5-	db.imdb.find({"actor.name":"Manoj Bajpayee"},{"actor.skill.$":1}).pretty();
+6-	db.imdb.find({"actor.name":"Manoj Bajpayee"},{"name":1,"actor.role.$":1}).pretty();
